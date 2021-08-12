@@ -23,15 +23,10 @@ body {
   font-family: "Inconsolata", monospace;
   font-weight: 1;
   background: rgba(43, 45, 37, 45%);
-  /* max-width: 1200px;
-    width: 100%; */
-  /* margin: 0 auto;
-    padding: 0 100px; */
   line-height: 1.5;
   font-size: 18px;
 }
 .page-wrap {
-  /* position: relative; */
   background: #e7e8e9;
   margin: 0 auto;
   margin-top: 100px;
@@ -85,6 +80,9 @@ a:hover {
   position: fixed;
   top: 30px;
   right: 30px;
+  display: flex;
+  flex-direction: row-reverse;
+  background-size: 100px;
 }
 .fixed img {
   opacity: 15%;
@@ -95,8 +93,34 @@ a:hover {
 }
 .fixed img:hover {
   opacity: 100%;
+  box-shadow: 5px 5px 10px #091a20, -5px -5px 10px #f3f1f8;
 }
-
+.fixed img:active {
+  opacity: 100%;
+  box-shadow: 1px 1px 2px #091a20, -1px -1px 2px #f3f1f8;
+}
+.animation-container {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-style: italic;
+  font-size: smaller;
+  opacity: 80%;
+  margin: auto 0;
+  padding-right: 7px;
+  position: relative;
+  animation: 2s ease 0.5s infinite running slidein;
+  cursor: default;
+}
+@keyframes slidein {
+  from {
+    left: -7px;
+  }
+  to {
+    left: 5px;
+  }
+}
 /* Profile
 ------------------------------------*/
 header {
@@ -107,6 +131,7 @@ header {
   background-repeat: no-repeat;
   background-position: 50% 67%;
   background-size: 90%;
+  text-align: center;
 }
 header a {
   color: #f3f1f8;
@@ -123,7 +148,7 @@ h1 {
 }
 .profile-details > img {
   margin-top: 30px;
-  border-radius: 5000px;
+  border-radius: 50%;
   width: 120px;
   height: 120px;
 }
@@ -136,23 +161,24 @@ h1 {
 .contact-details img {
   width: 30px;
   height: 30px;
+  cursor: pointer;
 }
 .contact-details img:hover {
   opacity: 80%;
 }
-.contact-details li {
+.contact-wrap li {
   padding: 2px 2px;
   font-size: 18px;
   display: inline-block;
 }
 .contact-wrap {
   display: flex;
+  text-align: left;
 }
 
 /******Objectives******/
 .obj {
   padding: 0;
-  /* padding-left: 30px; */
   max-width: 800px;
   width: 70%;
   margin: 0 auto;
@@ -202,7 +228,8 @@ h1 {
   margin-bottom: 0;
 }
 .portfolios h3 {
-  margin-top: 0;
+  margin-top: 20px;
+  text-align: center;
 }
 .portfolios img {
   border-style: groove;
@@ -210,6 +237,7 @@ h1 {
 }
 .portfolio-image {
   padding: 0;
+  text-align: center;
 }
 .portfolio-image a {
   font-size: 13px;
@@ -241,7 +269,6 @@ h1 {
 .work-exp ul {
   margin: 0;
 }
-/* */
 .work-details h3 ~ p {
   font-style: italic;
 }
@@ -307,6 +334,12 @@ footer img {
   height: 35px;
   border-radius: 8px;
 }
+footer img:hover {
+  box-shadow: 3px 3px 7px black, -3px -3px 7px rgb(240, 238, 238);
+}
+footer img:active {
+  box-shadow: 1px 1px 2px #091a20, -1px -1px 2px #f3f1f8;
+}
 .contact-list {
   list-style-type: none;
   padding: 0; /***remove default space**/
@@ -347,7 +380,7 @@ footer p {
 @media screen and (max-width: 521px) {
   header {
     background-image: url(../images/line.png);
-    background-position: 50% 27%;
+    background-position: 50% 30%;
   }
   .list-text {
     text-indent: -999999999px;
@@ -362,6 +395,12 @@ footer p {
   }
 }
 
+@media screen and (max-width: 431px) {
+  header {
+    background-position: 50% 27%;
+  }
+}
+
 @media screen and (min-width: 431px) {
   .fixed img {
     width: 45px;
@@ -371,14 +410,14 @@ footer p {
 
   h1 {
     font-weight: normal;
-    font-size: 50px;
+    font-size: 42px;
     margin-bottom: 20px;
     margin-top: 10px;
     line-height: 1;
   }
   .profile-details > img {
     margin-top: 50px;
-    border-radius: 5000px;
+    border-radius: 50%;
     width: 200px;
     height: 200px;
   }
@@ -386,6 +425,24 @@ footer p {
   .portfolio-image a {
     margin: 5px 69px;
     margin-bottom: 20px;
+  }
+}
+
+@media screen and (min-width: 550px) {
+  h1 {
+    font-size: 50px;
+  }
+}
+
+@media screen and (min-width: 849px) {
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: 4fr 4fr;
+    column-gap: 15px;
+    text-align: left;
+  }
+  .portfolios h3 {
+    margin-top: 0;
   }
 }
 
@@ -402,16 +459,14 @@ footer p {
   header {
     background-image: url(../images/line.png);
     background-position: 50% 45%;
+    text-align: left;
   }
   h1 {
-    font-weight: normal;
-    font-size: 50px;
     margin-bottom: 35px;
     margin-top: 55px;
-    line-height: 1;
   }
   .profile-details > img {
-    margin-top: 90px;
+    margin-top: 70px;
     margin-right: 25px;
     border-radius: 5000px;
     width: 200px;
@@ -425,7 +480,6 @@ footer p {
   .skills {
     text-align: right;
     padding-right: 45px;
-    /* padding: 0 30px; */
   }
   .skills h2 {
     text-align: right;
@@ -464,11 +518,6 @@ footer p {
   }
   .flex-item {
     flex: 1 1 100px;
-  }
-  .portfolio-grid {
-    display: grid;
-    grid-template-columns: 4fr 4fr;
-    column-gap: 20px;
   }
   .portfolio-image a {
     margin-bottom: 0;
